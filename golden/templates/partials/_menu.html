@@ -1,0 +1,137 @@
+{% load static %}
+<!-- ##### Header Area Start ##### -->
+<header class="header-area">
+
+    <!-- Top Header Area -->
+    <div class="top-header-area">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center justify-content-between">
+                <!-- Breaking News -->
+                <div class="col-12 col-sm-6">
+                    <div class="breaking-news">
+                        <div id="breakingNewsTicker" class="ticker">
+                            <ul>
+                                <li><a href="" style="color:black">Seja bem-vindo ao site!</a></li>
+                                <li><a href="" style="color:black"> Você encontra aqui, as melhores Blusas, Calças, Acessórios, Bonés e Cordões</a></li>
+                                <li><a href="" style="color:black">GOLDEN BEAR COMPANY</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Top Social Info -->
+                <div class="col-12 col-sm-6">
+                    <div class="top-social-info text-right">
+
+                        <a rel="noopener noreferrer" href="https://www.facebook.com/goldenbearcompany/" target="_blank"><i class="fa fa-facebook" aria-hidden="true" style="color:black"></i></a>
+
+                        <a rel="noopener noreferrer" href="https://instagram.com/goldenbearcompany?igshid=ztaa1r9rtdic" target="_blank"><i class="fa fa-instagram" aria-hidden="true" style="color:black"></i></a>
+
+                        <a rel="noopener noreferrer"
+                        href="https://mail.google.com/mail/u/0/?tab=wm&ogbl#inbox?compose=GTvVlcSKjgLBcFlstWbKbXShCsFJNxWgDmKknhbldXVSQtLmwTtwwLVqlVkTltWKVkGfCNPqjtVKl"
+                        target="_blank"><i class="fa fa-envelope" aria-hidden="true" style="color:black"></i></a>
+
+                        {% if user.is_authenticated %}
+                        <a rel="noopener noreferrer" 
+                        href="https://api.whatsapp.com/send?1=pt_BR&phone=5511992176233&text=Olá, proprietario(a) da Golden Bear, eu sou o Cliente {{ user.username }}" 
+                        target="_blank"><i class="fa fa-whatsapp" aria-hidden="true" style="color:black"></i></a>
+                        {% else %}
+                        <a rel="noopener noreferrer" 
+                        href="https://api.whatsapp.com/send?1=pt_BR&phone=5511952877010&text=Olá, proprietario(a) da Golden Bear" 
+                        target="_blank"><i class="fa fa-whatsapp" aria-hidden="true" style="color:black"></i></a>
+                        {% endif %}
+
+
+                        {% if user.is_authenticated %}
+                        <span>Olá, <i class="fa fa-user" aria-hidden="true" style="color:black"></i> 
+                                {{ user.username }}, seja bem-vindo ao site da <br>GOLDEN BEAR
+                                <i class="fa fa-paw" aria-hidden="true"></i>
+                        </span>
+                        {% elif user.is_superuser %}
+                        <span>Olá, <i class="fa fa-user" aria-hidden="true" style="color:black"></i> 
+                            {{ user.username }}, seja bem-vindo ao site da <br>GOLDEN BEAR
+                            <i class="fa fa-paw" aria-hidden="true"></i>
+                        </span>
+                        {% else %}
+                        <span>Olá, seja bem-vindo ao site da GOLDEN BEAR
+                            <i class="fa fa-paw" aria-hidden="true"></i>
+                        </span>
+                        {% endif %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navbar Area -->
+    <div class="delicious-main-menu">
+        <div class="classy-nav-container breakpoint-off">
+            <div class="container">
+                <!-- Menu -->
+                <nav class="classy-navbar justify-content-between" id="deliciousNav">
+
+                    <!-- Logo -->
+
+                    <a class="nav-brand" href="{% url 'index' %}"><h6><i class="fa fa-paw" aria-hidden="true" align="center"></i> Golden Bear </h6></a>
+
+                    <!-- Navbar Toggler -->
+                    <div class="classy-navbar-toggler">
+                        <span class="navbarToggler"><span></span><span></span><span></span></span>
+                    </div>
+
+                    <!-- Menu -->
+                    <div class="classy-menu">
+
+                        <!-- close btn -->
+                        <div class="classycloseIcon">
+                            <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                        </div>
+
+                        <!-- Nav Start -->
+                        <div class="classynav col-12">
+                            <ul>
+                                {% if user.is_authenticated %}
+
+                                <li><a href="{% url 'index' %}" class="btn btn-outline-dark border border-dark"><i class="fa fa-home" aria-hidden="true" ></i> Página principal </a></li>
+
+                                <li><a href="{% url 'sobre' %}" class="btn btn-outline-dark border border-dark"><i class="fa fa-paw" aria-hidden="true"></i> Sobre Nós </a></li>
+
+                                <li><a href="{% url 'carrinho' %}" class="btn btn-outline-dark border border-dark"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Carrinho </a></li>
+
+                                <li><a href="{% url 'logout' %}" class="btn btn-outline-dark border border-dark"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout </a></li>
+
+                                {% else %}
+
+                                <li><a href="{% url 'index' %}" class="btn btn-outline-dark border border-dark"><i class="fa fa-home" aria-hidden="true"></i> Página principal </a></li>
+
+                                <li><a href="{% url 'sobre' %}" class="btn btn-outline-dark border border-dark"><i class="fa fa-paw" aria-hidden="true"></i> Sobre Nós </a></li>
+
+                                <li><a href="{% url 'cadastro' %}" class="btn btn-outline-dark border border-dark"><i class="fa fa-registered" aria-hidden="true"></i> Cadastro </a></li>
+
+                                <li><a href="{% url 'login' %}" class="btn btn-outline-dark border border-dark"><i class="fa fa-sign-in" aria-hidden="true"></i> Login </a></li>
+                                {% endif %}
+                            </ul>
+
+                            <!-- Formulario de busca -->
+                            <div class="search-btn btn btn-outline-light">
+                                <i class="fa fa-search" aria-hidden="true" style="color:black"></i>
+                            </div>
+                            <!-- Formulario de busca -->
+
+                        </div>
+                        <!-- Nav End -->
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- ##### Header Area End ##### -->
+
+<script>
+    function exibirEmail()
+    {
+        alert("Email: goldenbearcompany@gmail.com")
+    }
+</script>

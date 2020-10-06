@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <!-- Preloader -->
+    <div id="preloader" >
+        <i class="circle-preloader" ></i>
+        <img src="{% static 'img/core-img/spinner.png' %}" alt="">
+    </div>
+
+    {% include 'partials/_busca.html' %}
+
+    {% include 'partials/_menu.html' %}
+
+    <!-- ##### Best Receipe Area Start ##### -->
+    <section class="best-receipe-area">
+        <div class="container">
+            <div class="row">
+                {% if categorias %}
+                {% for categoria in categorias %}
+                <!-- Single Best Receipe Area -->
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="single-best-receipe-area mb-30">
+                        {% if categoria.foto_categoria == '' %}
+                            <img src="{% static 'img/login-img/goldenComLogo.jpeg' %}" alt="">
+                        {% else %}
+                            <img src="{{ categoria.foto_categoria.url }}" alt="">
+                        {% endif %}
+                        <div class="receipe-content">
+                        <a href="{% url 'produto' categoria.id%}">
+                            <button class="btn btn-outline-dark border border-dark" type="submit"><i class="fa fa-list" aria-hidden="true"></i> {{ categoria.nome_categoria}}</button>
+                        </a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </section>
+    <!-- ##### Best Receipe Area End ##### -->
+
+    <!-- ##### Pagination ##### -->
+    <section class="top-catagory-area section-padding-20-0" style="color:black">
+        <div class="container" >
+            {% if categorias.has_other_pages %}
+            <ul class="pagination justify-content-center" style="color:black">
+                {% if categorias.has_previous %}
+                <li class="page-item" style="color:black">
+                    <a href="?page={{ categorias.previous_page_number }}" class="page-link">&laquo;</a>
+                </li>
+                {% else %}
+                <li class="page-item disabled" style="color:black">
+                    <a class="page-link" style="color:black">&laquo;</a>
+                </li>
+                {% endif %}
+                {% for pagina in categorias.paginator.page_range %}
+                {% if categorias.number == pagina %}
+                <li class="page-item active " style="color:black">
+                    <a class="page-link" style="color:black">{{ pagina }}</a>
+                </li>
+                {% else %}
+                <li class="page-item" style="color:black">
+                    <a href="?page={{ pagina }}" class="page-link btn btn-outline-dark" style="color:black">{{ pagina }}</a>
+                </li>
+                {% endif %}
+                {% endfor %}
+                {% if categorias.has_next %}
+                <li class="page-item" style="color:black">
+                    <a href="?page={{ categorias.next_page_number }}" style="color:black" class="page-link btn btn-outline-dark">&raquo;</a>
+                </li>
+                {% else %}
+                <li class="page-item disabled" style="color:black">
+                    <a class="page-link" style="color:black">&raquo;</a>
+                </li>
+                {% endif %}
+            </ul>
+            {% endif %}
+        </div>
+    </section>
+    <!-- ##### Pagination End ##### -->
+
+
+    {% include 'partials/_footer.html' %}
+{% endblock %}

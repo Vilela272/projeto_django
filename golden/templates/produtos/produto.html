@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <link rel="stylesheet" href="{% static 'botao.css}">
+
+    <!-- Preloader -->
+    <div id="preloader" >
+        <i class="circle-preloader" ></i>
+        <img src="{% static 'img/core-img/spinner.png' %}" alt="">
+    </div>
+
+    {% include 'partials/_busca.html' %}
+
+    {% include 'partials/_menu.html' %}
+
+    <!-- ##### Best Receipe Area Start ##### -->
+    <section class="best-receipe-area">
+        <div class="container">
+            <div class="row">
+                <!-- Single Best Receipe Area -->
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="single-best-receipe-area mb-30">
+                        {% if produto.foto_produto == '' %}
+                            <img src="{% static 'img/login-img/goldenComLogo.jpeg' %}" alt="">
+                        {% else %}
+                            <img src="{{ produto.foto_produto.url }}" alt="">
+                        {% endif %}
+                        <div class="receipe-content">
+                            <p align="justify">Produto: {{ produto.nome_produto}}</p>
+                            <p align="justify">Data de lançamento: {{ produto.data_produto }}</p>
+                            <p align="justify">Informação do produto: {{ produto.descricao }}</p>
+
+                            <a href="{% url 'carrinho' %}">
+                            <p align="justify">
+                            <button class="btn btn-outline-dark border border-dark" type="submit">Adicionar ao carrinho <i class="fa fa-cart-arrow-down" aria-hidden="true"></i></button></p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ##### Best Receipe Area End ##### -->
+
+    {% include 'partials/_footer.html' %}
+{% endblock %}

@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+{% include 'partials/_busca.html' %}
+
+{% include 'partials/_menu.html' %}
+
+        <!-- Preloader -->
+        <div id="preloader" >
+            <i class="circle-preloader" ></i>
+            <img src="{% static 'img/core-img/spinner.png' %}" alt="">
+        </div>
+        <!-- ##### Contact Form Area Start ##### -->
+        <div class="contact-area section-padding-0">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="section-heading">
+                            <h2>Crie sua conta no site da Golden Bear <i class="fa fa-registered" aria-hidden="true"></i></h2>
+                        </div>
+                    </div>
+                </div>
+                {% include 'partials/_alertas.html' %}
+                <div class="row">
+                    <div class="col-12">
+
+                        <div class="alert alert-info" role="alert">
+                            INFORMAÇÃO! Todos os campos são obrigatórios
+                          </div>
+
+                        <div class="contact-form-area">
+                            <form action="{% url 'cadastro' %}" method="POST">
+                                {% csrf_token %}
+                                <div class="row">
+
+                                    <div class="col-12 col-lg-12">
+                                        <label for="username"><b>Usuário <i class="fa fa-user-plus" aria-hidden="true"></i></b></label>
+                                        <input type="text" class="form-control" name="username" placeholder="Ex.:Fulano.Silva" required> 
+                                    </div>
+
+                                    <div class="col-12 col-lg-6">
+                                        <label for="nome"><b>Nome <i class="fa fa-user-plus" aria-hidden="true"></i></b></label>
+                                        <input type="text" class="form-control" name="nome" placeholder="Ex.:Fulano" required> 
+                                    </div>
+
+                                        <div class="col-12 col-lg-6">
+                                            <label for="sobrenome"><b>Sobrenome <i class="fa fa-user-plus" aria-hidden="true"></i></b></label>
+                                            <input type="text" class="form-control" name="sobrenome" placeholder="Ex.:da Silva" required> 
+                                        </div>
+
+                                    <div class="col-12 col-lg-6">
+                                        <label for="email"><b>Email <i class="fa fa-envelope-o fa-fw" aria-hidden="true"></i></b></label>
+                                        <input type="email" class="form-control" name="email" placeholder="Ex.: fulano@gmail.com" required>
+                                    </div>
+
+                                    <div class="col-12 col-lg-6">
+                                        <label for="email2"><b>Confirmação de Email <i class="fa fa-envelope-o fa-fw" aria-hidden="true"></i></b></label>
+                                        <input type="email" class="form-control" name="email2" placeholder="Ex.: fulano@gmail.com" required>
+                                    </div>
+
+                                    <div class="col-12 col-lg-6">
+                                        <label for="password"><b>Senha <i class="fa fa-key fa-fw" aria-hidden="true"></i></b></label>
+                                        <input type="password" class="form-control" name="password" placeholder="Digite sua senha" required>
+                                    </div>
+
+                                    <div class="col-12 col-lg-6 input-group col-md-4 f-left">
+                                        <label for="password2"><b>Confirmação de senha <i class="fa fa-key fa-fw" aria-hidden="true"></i></b></label>
+                                        <input type="password" class="form-control" name="password2" placeholder="Digite sua senha mais uma vez" id="user_password2" data-component="password-strength" data-monitor-id="password-strength-monitor"required >
+                                    </div>
+
+                                    <div class="classynav col-12 text-center">
+                                        <button class="btn btn-outline-success border border-success" type="submit">Criar sua conta <i class="fa fa-upload" aria-hidden="true"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+    {% include 'partials/_footer.html' %}
+{% endblock %}

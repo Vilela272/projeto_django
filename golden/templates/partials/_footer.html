@@ -1,0 +1,51 @@
+{% load static %}
+
+<!-- ##### Footer Area Start ##### -->
+<footer class="footer-area">
+    <div class="container h-100">
+        <div class="row h-100">
+            <div class="col-12 h-100 d-flex flex-wrap align-items-center justify-content-between">
+                <!-- Footer Social Info -->
+                <div class="footer-social-info text-right">
+                    <a rel="noopener noreferrer" href="https://www.facebook.com/goldenbearcompany/" target="_blank"><i class="fa fa-facebook" aria-hidden="true" style="color:black"></i></a>
+
+                    <a rel="noopener noreferrer" href="https://instagram.com/goldenbearcompany?igshid=ztaa1r9rtdic" target="_blank"><i class="fa fa-instagram" aria-hidden="true" style="color:black"></i></a>
+
+                    <a rel="noopener noreferrer"
+                    href="https://mail.google.com/mail/u/0/#inbox?compose=CllgCJZbjmrNfGKLsgVXfWkKdKnHvHvtmfnFWxFmGwMMPLNSnLHNBzDBfMNxtkBRCVBRWVSwRCg"
+                    target="_blank"><i class="fa fa-envelope" aria-hidden="true" style="color:black"></i></a>
+
+                    {% if user.is_authenticated %}
+                    <a rel="noopener noreferrer"
+                    href="https://api.whatsapp.com/send?1=pt_BR&phone=5511992176233&text=Olá, proprietario(a) da Golden Bear, eu sou o Cliente {{ user.username }}"
+                    target="_blank"><i class="fa fa-whatsapp" aria-hidden="true" style="color:black"></i></a>
+                    {% else %}
+                    <a rel="noopener noreferrer"
+                    href="https://api.whatsapp.com/send?1=pt_BR&phone=5511952877010&text=Olá, proprietario(a) da Golden Bear"
+                    target="_blank"><i class="fa fa-whatsapp" aria-hidden="true" style="color:black"></i></a>
+                    {% endif %}
+                </div>
+                <div class="footer-social-info text-left">
+                    <a href="#" style="color:black">Copyright <i class="fa fa-copyright" aria-hidden="true"> GOLDEN BEAR COMPANY</i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- ##### Footer Area Start ##### -->
+<script>
+function exibirTelefone()
+{
+        alert("Telefone: (11) 99217-6233")
+} 
+
+function exibirEmail()
+{
+    alert("Email: goldenbearcompany@gmail.com")
+}
+
+function exibirDataFooter()
+{
+    var ano = new Date().getFullYear();
+}
+</script>

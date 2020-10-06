@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!-- Preloader -->
+<div id="preloader">
+   <i class="circle-preloader"></i>
+   <img src="{% static 'img/core-img/pizza.png' %}" alt="">
+</div>
+ 
+{% include 'partials/_busca.html' %}
+ 
+{% include 'partials/_menu.html' %}
+ 
+<!-- ##### Contact Form Area Start ##### -->
+<div class="contact-area section-padding-0-80">
+   <div class="container">
+       <div class="row">
+           <div class="col-12">
+               <div class="section-heading">
+                   <h3>Olá, {{ user.username }},
+                       envie seu e-mail para a GOLDEN BEAR, com alguma sugestão ou reclamação
+                   </h3>
+               </div>
+           </div>
+       </div>
+ 
+       <div class="row">
+           <div class="col-12">
+            <div class="alert alert-info" role="alert">
+                INFORMAÇÃO! Todos os campos são obrigatórios
+            </div>
+               <div class="contact-form-area">
+                   <form action="{% url 'index' %}" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                       <div class="row">
+
+                            <div class="col-12 col-lg-12">
+                                <label for="nome"><b>Nome Completo * <i class="fa fa-user-plus" aria-hidden="true" style="color:black"></i></b></label>
+                                <input type="text" class="form-control" name="nome" placeholder="Ex.:Fulano da Silva" required> 
+                            </div>
+
+                            <div class="col-12 col-lg-12">
+                                <label for="email"><b>Email *<i class="fa fa-envelope-o fa-fw" aria-hidden="true" style="color:black"></i></b></label>
+                                <input type="email" class="form-control" name="email" placeholder="Insira seu E-mail" required>
+                            </div>
+
+                            <div class="col-12 col-lg-12">
+                                <label for="email"><b>Assunto * <i class="fa fa-edit" aria-hidden="true" style="color:black"></i></b></label>
+                                <input type="email" class="form-control" name="email" placeholder="Insira o assunto" required>
+                            </div>
+
+                           <div class="col-12">
+                               <label for="file"><b>Descrição * <i class="fa fa-edit" aria-hidden="true" style="color:black"></i></b></label>
+                               <textarea class="form-control" name="modo_preparo" cols="30" rows="10" placeholder="Descreva o e-mail de sugestão ou problema aqui" required></textarea>
+                           </div>
+
+                           <div class="col-12 col-lg-6">
+                                <label for="nascimento"><b>Data <i class="fa fa-calendar" aria-hidden="true" style="color:black"></i>
+                                </b></label>
+                                <input type="date" class="form-control" name="nascimento" placeholder="Insira a data em que ocorreu o problema" required>
+                            </div>
+
+                           <div class="col-12 col-lg-6">
+                               <label for="file"><b>Anexo <i class="fa fa-picture-o" aria-hidden="true" style="color:black"></i>
+                               </b></label>
+                               <input type="file" class="form-control" name="Anexar imagem ou arquivo" required>
+                           </div><br>
+
+                           <div class="col-12 text-center">
+                                <button class="btn btn-success" type="submit">Enviar e-mail <i class="fa fa-edit" aria-hidden="true"></i></button>
+                           </div>
+                       </div>
+                   </form>
+               </div>
+           </div>
+       </div>
+   </div>
+</div>
+ 
+{% include 'partials/_footer.html' %}
+{% endblock %}
